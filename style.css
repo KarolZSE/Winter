@@ -1,11 +1,45 @@
-#Game {
+#Game, #TreeCutting {
     position: absolute;
-    display: grid;
     width: 600px;
     height: 600px;
+} 
+
+#Game {
+    display: grid;
     border: 1px solid black;
     grid-template-columns: repeat(15, 40px);
     grid-template-rows: repeat(15, 40px);
+}
+
+#TreeCutting {
+    display: flex;
+    background: wheat;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    border: 2px solid black;
+}
+
+#Tree, #PlayerIcon {
+    width: 33%;
+    height: 90%;
+    border: 1px solid green;
+}
+
+#AccuracyBar {
+    position: absolute;
+    width: 90%;
+    height: 30%;
+    bottom: 10px;
+    border: 1px solid black;
+    background: linear-gradient(to right, red 0%, orange 10%, yellow 20%, darkgreen 30%, green 45%, lime 50%, green 55%, darkgreen 70%, yellow 80%, orange 90%, red 100%);
+}
+
+#Pointer {
+    position: relative;
+    height: 100%;
+    width: 2px;
+    background: black;
 }
 
 #Player {

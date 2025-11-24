@@ -15,7 +15,10 @@ for (let i = 0; i < 15; i++) {
         
         if (count % 4 == 0) {
             grid[i][j] = 'tree';
-            block.classList.add('tree'); 
+            block.classList.add('tree');
+            block.addEventListener('click', () => {
+
+            });
         }
 
         Game.appendChild(block);
@@ -25,6 +28,7 @@ for (let i = 0; i < 15; i++) {
 let x = y = 0;
 const trees = document.querySelectorAll('.tree')
 document.addEventListener('keydown', (e) => {
+    console.log(e)
     x = y = 0;
     if (e.key.toLowerCase() === 'w') {
         y = -4;
@@ -38,6 +42,8 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key.toLowerCase() === 'a') {
         x = -4;
 
+    } else if (e.key === ' ') {
+        console.log(PointerMoveCount / AccuracyRect.width);
     }
 
     Player.style.top = Player.offsetTop + y + 'px';
@@ -61,3 +67,16 @@ function isColliding(a, b) {
         (aRect.left > (bRect.left + bRect.width))
     );
 }
+
+const Pointer = document.getElementById('Pointer');
+const AccuracyRect = document.getElementById('AccuracyBar').getBoundingClientRect();
+let PointerMoveCount = 0;
+let z = 3;
+setInterval(() => {
+    PointerMoveCount += z;
+    Pointer.style.left = PointerMoveCount + 'px';
+    if (PointerMoveCount >= AccuracyRect.width) {
+        console.log('test')
+        z = -3;
+    } else if (PointerMoveCount <= 0) z = 3;
+}, 10);
