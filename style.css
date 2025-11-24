@@ -1,0 +1,16 @@
+#Game {
+    position: absolute;
+    display: grid;
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    grid-template-columns: repeat(15, 40px);
+    grid-template-rows: repeat(15, 40px);
+}
+
+#Player {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #000;
+}
