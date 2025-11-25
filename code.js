@@ -61,16 +61,14 @@ document.addEventListener('mousemove', (e) => {
 
     y = Player.offsetTop;
     x = Player.offsetLeft;
-    Player.style.top = e.clientY - Player.offsetHeight / 2 + 'px';
-    Player.style.left = e.clientX - Player.offsetWidth / 2 + 'px';
+
 
     trees.forEach(ev => {
-        if(isColliding(Player, ev)) {
-            console.log('ok');
-            Player.style.top = Player.offsetTop - y + 'px';
-            Player.style.left = Player.offsetLeft - x + 'px';
-        }
+        if (isColliding(Player, ev)) return;
     });
+
+    Player.style.top = e.clientY - Player.offsetHeight / 2 + 'px';
+    Player.style.left = e.clientX - Player.offsetWidth / 2 + 'px';
 });
 
 function isColliding(a, b) {
