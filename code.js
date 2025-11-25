@@ -1,4 +1,5 @@
 const Game = document.getElementById('Game');
+const TreeCutting = document.getElementById('TreeCutting');
 let grid = [];
 let count = 0;
 const Player = document.getElementById('Player');
@@ -26,9 +27,23 @@ for (let i = 0; i < 15; i++) {
 }
 
 let x = y = 0;
-const trees = document.querySelectorAll('.tree')
+const trees = document.querySelectorAll('.tree');
+const HitsRequieredHTML = document.getElementById('HitsRequiered');
+let HitsRequiered = 5;
 document.addEventListener('keydown', (e) => {
-    console.log(e)
+    if (e.key === ' ') {
+        if (Math.random() <= (1 - Math.abs((PointerMoveCount / AccuracyRect.width) * 2 - 1))) HitsRequiered--;
+        HitsRequieredHTML.textContent = HitsRequiered;
+
+        if (HitsRequiered <= 0) {
+            TreeCutting.style.display = 'none';
+        }
+    }
+
+});
+
+document.addEventListener('mousemove', (e) => {
+    /*
     x = y = 0;
     if (e.key.toLowerCase() === 'w') {
         y = -4;
@@ -42,14 +57,16 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key.toLowerCase() === 'a') {
         x = -4;
 
-    } else if (e.key === ' ') {
-        console.log(PointerMoveCount / AccuracyRect.width);
-    }
+        */
 
-    Player.style.top = Player.offsetTop + y + 'px';
-    Player.style.left = Player.offsetLeft + x + 'px';
+    y = Player.offsetTop;
+    x = Player.offsetLeft;
+    Player.style.top = e.clientY - Player.offsetHeight / 2 + 'px';
+    Player.style.left = e.clientX - Player.offsetWidth / 2 + 'px';
+
     trees.forEach(ev => {
         if(isColliding(Player, ev)) {
+            console.log('ok');
             Player.style.top = Player.offsetTop - y + 'px';
             Player.style.left = Player.offsetLeft - x + 'px';
         }
