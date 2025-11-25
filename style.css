@@ -12,7 +12,7 @@
 }
 
 #TreeCutting {
-    display: flex;
+    display: none;
     background: wheat;
     justify-content: space-around;
     align-items: center;
@@ -26,10 +26,16 @@
     border: 1px solid green;
 }
 
+#Tree {
+    background: url('TreeTextures/Normal.png');
+    background-size: 5600px 542px;
+    image-rendering: pixelated;
+} 
+
 #AccuracyBar {
     position: absolute;
     width: 90%;
-    height: 30%;
+    height: 10%;
     bottom: 10px;
     border: 1px solid black;
     background: linear-gradient(to right, red 0%, orange 10%, yellow 20%, darkgreen 30%, green 45%, lime 50%, green 55%, darkgreen 70%, yellow 80%, orange 90%, red 100%);

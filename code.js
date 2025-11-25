@@ -1,25 +1,36 @@
 const Game = document.getElementById('Game');
+const TreeCutting = document.getElementById('TreeCutting');
 let grid = [];
+let growStage = [];
 let count = 0;
 const Player = document.getElementById('Player');
 const rect = Game.getBoundingClientRect();
-console.log(rect.left, rect.top);
 Player.style.left = rect.left + 'px';
 Player.style.top = rect.top + 'px';
 
 for (let i = 0; i < 15; i++) {
     grid[i] = [];
+    growStage[i] = [];
     for (let j = 0; j < 15; j++) {
         const block = document.createElement('div');
-        block.textContent = count++;
-        
+        count++;
+
         if (count % 4 == 0) {
-            grid[i][j] = 'tree';
+            growStage[i][j] = 0;
+            block.textContent = growStage[i][j];
             block.classList.add('tree');
             block.addEventListener('click', () => {
-
+                HitsRequiered = 5;
+                TreeCutting.style.display = 'flex';
+                AccuracyRect = document.getElementById('AccuracyBar').getBoundingClientRect();
+                let temp = 0;
+                setInterval(() => {
+                    if (temp >= 28) temp = 0;
+                    console.log('12345')
+                    document.getElementById('Tree').style.backgroundPosition = `-${200 * temp++}px 0`;
+                }, 300);
             });
-        }
+        };
 
         Game.appendChild(block);
     }
@@ -75,7 +86,7 @@ function isColliding(a, b) {
 }
 
 const Pointer = document.getElementById('Pointer');
-const AccuracyRect = document.getElementById('AccuracyBar').getBoundingClientRect();
+let AccuracyRect = document.getElementById('AccuracyBar').getBoundingClientRect();
 let PointerMoveCount = 0;
 let z = 3;
 setInterval(() => {
